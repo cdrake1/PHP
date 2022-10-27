@@ -24,7 +24,7 @@
       Echo "<br> Attemping to connect to our Mysql database...  ";
   } 
   
-  $dbc=mysqli_connect('127.0.0.1','mike','easysteps','site_db')
+  $dbc=mysqli_connect('localhost','mike','easysteps','site_db')
   OR die
       (   mysqli_connect_error());;
 	  

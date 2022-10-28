@@ -13,6 +13,10 @@
         require ("connect_db.php");
         echo"<br>";
 
+        #set up and run our query
+        $q = "Select * from prints";
+        $r = mysqli_query ($dbc, $q);
+
         ?>
         
     </body>

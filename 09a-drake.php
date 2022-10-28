@@ -1,61 +1,36 @@
 <!DOCTYPE html>
-
-<!-- In class PHP work -->
-
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        
-        <title> 09a Drake </title>
+    
+        <title> Assignment 9 - Drake </title>
     </head>
     <body>
         <?php
-            echo "<h2> Step 1: Arrays </h2>";
+            echo "<b><br> 9A - C. Drake </b><br>";
+            echo "<p> We first call connect_db.php to connect to site_db.";
 
-            $months[] = 'January';
-            $months[] = 'February';
-            $months[] = 'March';
-            
-            echo "<br> 0 - $months[0]";
-            echo "<br> 1 - $months[1]";
-            echo "<br> 2 - $months[2]";
+            require ("connect_db.php");
+            echo"<br>";
+            //5
+            $q = "USE site_db";
+            $r = mysqli_query ($dbc, $q);
 
-            $months[6] = 'July';
-            echo "<br> 6 - $months[6]";
-
-            echo "<br>";
-
-            $friends[] = 'Reilly';
-            $friends[] = 'Denji';
-            $friends[] = 'Gojo';
-
-            echo "<br> 0 - $friends[0]";
-            echo "<br> 1 - $friends[1]";
-            echo "<br> 2 - $friends[2]";
-
-            echo "<br>";
-
-            $courses= array('SD2','Data Comm','DataBase Management','Introduction to Stats');
-            echo "<br> 0 - $courses[0]";
-            echo "<br> 1 - $courses[1]";
-            echo "<br> 2 - $courses[2]";
-            echo "<br> 3 - $courses[3]";
-
-            echo "<br>";
-
-            for($i = 0; $i<3; $i++){
-                echo "<br> " . $i . " " . $friends[$i];
+            if ($r ) {
+                echo "<br> Query worked";
+                while ($row = mysqli_fetch_array( $r, MYSQLI_NUM))
+                {
+                    echo "<br> Table: " . $row[0];
+                }
             }
 
-            echo "<br>";
-
-            echo "<br>" . count($friends);
-
-            
         ?>
 
-
+        <footer>
+            <h3> This is the end of this assignment </h3>
+            <h5> (C) C Drake, 2022 </h5>
+        </footer>
         
     </body>
-</html>
 
+</html>

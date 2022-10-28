@@ -17,12 +17,39 @@
             $r = mysqli_query ($dbc, $q);
 
             if ($r ) {
-                echo "<br> Query worked";
-                while ($row = mysqli_fetch_array( $r, MYSQLI_NUM))
-                {
-                    echo "<br> Table: " . $row[0];
+                $q = "Select * from courses";
+                $r = mysqli_query ($dbc, $q);
+                echo "<br> Query Worked";
+                while($row = mysqli_fetch_array( $r, MYSQLI_NUM)){
+                    echo "<b> <br> Row: $row[0] $row[1] $row[3] $row[4]</br>";
                 }
             }
+
+            $q = "Insert into courses Values('4','CMPT','307','Internetworking', null);";
+            $r =  mysqli_query ($dbc, $q);
+
+            echo "<h4> Display Updated Courses Table </h4>";
+            if ($r ) {
+                echo "<br> Query Worked";
+            }
+            else{
+                echo(mysqli_error($dbc));
+            }
+
+            $q = "Select * from courses";
+            $r = mysqli_query ($dbc, $q);
+            echo "<br> Query Worked";
+            while($row = mysqli_fetch_array( $r, MYSQLI_NUM)){
+                echo "<b> <br> Row: $row[0] $row[1] $row[3] $row[4]</br>";
+            }
+
+            $q = "Update courses Set student = 'Collin' Where recnum = '1';";
+            $r = mysqli_query ($dbc, $q);
+            echo "<br> Query Worked";
+            while($row = mysqli_fetch_array( $r, MYSQLI_NUM)){
+                echo "<b> <br> Row: $row[0] $row[1] $row[3] $row[4]</br>";
+            }
+            
 
         ?>
 

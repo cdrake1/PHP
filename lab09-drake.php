@@ -1,22 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
+<!-- Lab 9 PHP
+    Collin Drake October 29th 2022
+-->
+<?php
 
-        <title> Lab 9 Collin Drake </title>
-    </head>
-    <body>
-        <?php
-            echo "<h1> Lab 9 - PHP Functions </h1>";
-            echo "<br> <h5> Collin Drake </h5>";
-
-            require ("connect_db.php");
-            echo"<br>";
+    $fname = "Collin";
+    require ("connect_db.php");
+    echo"<br>";
 
 
+    define('FILE_AUTHOR', 'COLLIN DRAKE');
+    echo "<br>";
+    echo "<h1> Lab 9 - PHP Functions </h1>";
+    echo FILE_AUTHOR;
 
-        ?>
 
-        
-    </body>
-</html>
+    $q = "show tables from site_db;";
+    $r = mysqli_query ($dbc, $q);
+    if(!$r){
+        echo "DB error";
+        echo 'Mysql error: ' . mysql-error();        
+        exit;
+    }
+    while($row = mysql-fethc_row($r)){
+        echo "table: {$row[0]}\n";
+    }
+
+    function explain_table($table_name, $dbc){
+        echo "<br> Table (in function):" .  $table_name;
+        echo '<br> The variable $fname is set to ' . $fname;
+
+    }
+
+
+
+?>

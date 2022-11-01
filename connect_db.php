@@ -20,16 +20,10 @@
   
   $display_messages = TRUE;              
  
-  if ($display_messages) {
-      Echo "<br> Attemping to connect to our Mysql database...  ";
-  } 
   
   $dbc=mysqli_connect('127.0.0.1','mike','easysteps','site_db')
   OR die
       (   mysqli_connect_error());;
-	  
-  if ($display_messages) { 	  
-       Echo "<br> It was successful! <br>"; 
-  }  	   
+	  	   
          
 ## EOF 

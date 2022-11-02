@@ -10,22 +10,8 @@
     echo "<h1> Lab 9 - PHP Functions </h1>";
     echo FILE_AUTHOR;
 
-
     name_table($dbc);
-
-    echo "<br>";
-    function explain_table($table, $dbc)
-    {
-        $q = 'explain "$table"';
-        $r = mysqli_query ($dbc, $q);
-        if($r){
-            echo "<br><br> Query Worked";
-            while($row = mysqli_fetch_array($r, MYSQLI_NUM)){
-                echo ($row[0] . " " $row[1] . " " $row[2] . " " $row[3] . " " $row[4] . "<br> ")
-            }
-        }
-
-    }
+    explain_table($dbc);
 
     function name_table($dbc)
     {
@@ -37,7 +23,30 @@
             echo "<br><br> Query Worked";
             while($row = mysqli_fetch_array($r, MYSQLI_NUM)){
                 echo "<br> Table name: " . $row[0] . "<br>";
-                explain_table($row[0],$dbc);
+            }
+        }
+    }
+
+
+
+    function explain_table($dbc)
+    {
+        $q = "show tables";
+        $r = mysqli_query ($dbc, $q);
+
+        echo "<br><br>Displaying information for one Tables:";
+        if($r){
+            echo "<br><br> Query Worked";
+            while($row = mysqli_fetch_array($r, MYSQLI_NUM)){
+                echo "<br> Table name: " . $row[0] . "<br>";
+
+                $q = "explain $row[0]";
+                $r = mysqli_query ($dbc, $q);
+                if($r){
+                    while($row = mysqli_fetch_array($r, MYSQLI_NUM)){
+                        echo "<br> Table data: " . $row[0] . " " .  $row[1] . " " . $row[2] . " " . $row[3] . " " . $row[4] . " " . $row[5] . "<br>";
+                    }
+                }
             }
         }
     }

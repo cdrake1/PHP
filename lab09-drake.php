@@ -10,6 +10,8 @@
     echo "<h1> Lab 9 - PHP Functions </h1>";
     echo FILE_AUTHOR;
 
+    echo "<hr>";
+
     name_table($dbc);
     explain_table($dbc);
 
@@ -52,5 +54,7 @@
     }
 
 
+    echo "<hr>";
+    echo "<h5> (C) Collin Drake, 2022";
 
 ?>

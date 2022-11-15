@@ -13,7 +13,6 @@
     echo "<hr>";
 
     name_table($dbc);
-    explain_table($dbc);
 
     function name_table($dbc)
     {
@@ -25,6 +24,7 @@
             echo "<br><br> Query Worked";
             while($row = mysqli_fetch_array($r, MYSQLI_NUM)){
                 echo "<br> Table name: " . $row[0] . "<br>";
+                explain_table($dbc);
             }
         }
     }

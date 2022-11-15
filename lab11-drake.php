@@ -13,7 +13,6 @@
     <body>
         <?php
             require ("connect_db.php");
-            require ("footer.php");
             require ("error_handler.php");
 
             define('FILE_AUTHOR', 'COLLIN DRAKE');
@@ -25,6 +24,7 @@
             if (ISSET($_POST['username']))
             {
                 $username = $_POST['username'];
+            }
             else
             {
                 $username = "";
@@ -40,16 +40,54 @@
             }
 
 
-
-            echo "<form action= '$_SERVER['SCRIPT_NAME']' method='POST'>";
-            echo "<br> Enter your Username <input type='text' name='username' >";
-            echo "<br> Enter your Password <input type='password' name='password' >";
+            echo "<form action= '". $_SERVER['SCRIPT_NAME'] ."' method='POST'>";
+            echo "<br> Enter your Username <input type='text' value='$username' >";
+            echo "<br> Enter your Password <input type='password' value='$password' >";
             echo "<br><input type='submit' value='Submit!' style='color: blue;'>";
             echo "</form>";
             echo "<br>";
 
-            echo footer.php;
+            $error_message = "";
+            if($_SERVER["REQUEST_METHOD"] == "POST")
+            {
+                if($username = "")
+                {
+                    $error_message =  " No Username provided";
+                }
+                else if($password = "")
+                {
+                    $error_message = " No Password provided";
+                }
+
+            }
+            echo $error_message;
+
+            validation($dbc. $username, $password);
+            
+            function validation($dbc, $username1, $password1)
+            {
+                $q = "SELECT * FROM PrintUsers";
+                $r = mysqli_query ( $dbc , $q );
+                if($r)
+                {
+                    $row_count = $r->num_rows;
+
+                    if($row_count != 0)
+                    {
+                        $error_message = "This entry already exists";
+                    }
+                }
+                else
+                {
+                    echo "<br> Error: " . mysqli_error($dbc);
+                }
+
+            }
+
+            require ("footer.php");
         ?>
+
+        
         
     </body>
 </html>

@@ -18,7 +18,7 @@
 
 <?php
   
-  $display_messages = FALSE;  
+  $display_messages = TRUE;  
   
   if($display_messages){
     echo "<br> attempting to connect to our mysql database....";
@@ -29,8 +29,7 @@
   OR die
       (   mysqli_connect_error());;
     
-  if($display_messages)
-  {
+  if($display_messages){
     echo "<br> It was successful....";
   }
 	  	   
